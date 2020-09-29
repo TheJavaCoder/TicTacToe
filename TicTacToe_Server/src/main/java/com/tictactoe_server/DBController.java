@@ -2,7 +2,7 @@ package com.tictactoe_server;
 
 interface DBController {
 
-    // Init of the db controller (setting up constances)
+    // Init of the db controller (setting up constants for each db type and creating tables if necessary)
     void init();
 
     // Searching the player in the db by name
