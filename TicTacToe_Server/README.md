@@ -1,6 +1,7 @@
 # Tic-Tac-Toe Server
 
 ## First thoughts on classes and their responsibilities 
+(Please send me an email on your thoughts or questions)
 
 * app.java - the networking code and thread management and spawning off new game instances threads with the player sockets __(Mike Webb)__
 * Player.java - object representing the player __(Bailey Costello)__
