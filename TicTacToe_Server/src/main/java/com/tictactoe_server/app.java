@@ -14,6 +14,7 @@ public class app extends Application{
     
     public void init() {
         db = new AccessController();
+        db.init();
     }
     
     public static void main(String[] args) {
