@@ -1,5 +1,4 @@
-
-package server;
+package com.tictactoe_server;
 
 interface DBController {
 

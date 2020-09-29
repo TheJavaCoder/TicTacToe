@@ -1,4 +1,4 @@
-package server;
+package com.tictactoe_server;
 
 public class app {
 
