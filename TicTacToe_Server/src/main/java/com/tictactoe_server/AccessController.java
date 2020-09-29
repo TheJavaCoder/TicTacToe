@@ -30,6 +30,7 @@ public class AccessController implements DBController{
         //   3. create player object i.e Player player = new Player();
         //   4. Query the games table with the player's id and return the rows
         //   5. Build new ArrayList<GameResults>
+        //   6. Add the gameresults to the player object and return it
         
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
