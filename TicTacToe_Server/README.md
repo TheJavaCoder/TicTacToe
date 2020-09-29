@@ -20,8 +20,8 @@
   * Implement the described functions in DBController.java
 * TicTacToe __(implements runnable)__ - class to be used for the game __(Bailey Costello)__
   * METHODS:
-    * TicTacToe (Socket p1, Socket p2)
+    * TicTacToe (Socket p1, Socket p2) - to pass the player's sockets through to this thread
     * run() - to start the game
-    * askPlayerForInput(socket) - asks the user for their move and checks it. 
+    * askPlayerForInput(socket) - asks the user for their move and checks it. Only returns when the player has selected a valid move.
     * checkForWin() - checks the board for if someone wins evermove after 3 tie possible after 9 moves maybe before?
 
