@@ -2,15 +2,22 @@
 
 ## Goal of the Project:
 
-To create a networked tic-tac-toe game with an authoritative server and thin client.
+To create a networked tic-tac-toe game with an authoritative server and thin client with game history.
+
+### __Authors__:
+
+    - Mike Webb (Networking Client Side and Server Side / Threading)
+    - Thanh Nguyen (Java FX Client Side UI / AccessDB Server side implementation)
+    - Bailey Costello (Project Management / Java FX Server UI & Database abstraction) 
 
 ### *Requirements*:
+(Please explore the directories for more information related to the different components)
 
 * Server with multi-threading 
   * A tic-tac-toe class
-  * Server thread manager
   * An AccessDB with 2 tables 
-    * __To Be Determined (Waiting on professor)__
+    * User table (storing names and unique ids)
+    * GameHistory table (storing user_id, opponent_id, date, and result)
 
 * Client using JavaFX
   * __To Be Determined (Waiting on professor)__
@@ -27,6 +34,9 @@ To create a networked tic-tac-toe game with an authoritative server and thin cli
 10/11/2020 ->
   * More testing
   * Documentation and powerpoint
+
+### *Future Updates:*
+* Create more DBConnectors (Mysql, sql, MongoDB)
 
 ### *Imporant Links:*
 

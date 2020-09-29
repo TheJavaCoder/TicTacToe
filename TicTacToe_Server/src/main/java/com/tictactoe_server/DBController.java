@@ -1,5 +1,7 @@
 package com.tictactoe_server;
 
+
+ // To be a db controller you have to implement these functions
 interface DBController {
 
     // Init of the db controller (setting up constants for each db type and creating tables if necessary)
