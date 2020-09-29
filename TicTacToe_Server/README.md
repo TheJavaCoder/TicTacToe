@@ -2,7 +2,7 @@
 
 ## First thoughts on classes and their responsibilities 
 
-* main.java - the networking code and thread management and spawning off new game instances threads with the player sockets __(Mike Webb)__
+* app.java - the networking code and thread management and spawning off new game instances threads with the player sockets __(Mike Webb)__
 * Player.java - object representing the player __(Bailey Costello)__
   * public int id - the unique id of the player
   * public String name - the name of the player
