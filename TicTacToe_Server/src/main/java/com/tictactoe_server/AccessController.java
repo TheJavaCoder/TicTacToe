@@ -20,7 +20,7 @@ public class AccessController implements DBController{
     
     // Returns a player object with their game history
     @Override
-    public Player searchPlayer(String name) {
+    public Player getPlayer(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

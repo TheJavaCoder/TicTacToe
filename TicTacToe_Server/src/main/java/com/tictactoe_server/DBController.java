@@ -6,7 +6,7 @@ interface DBController {
     void init();
 
     // Searching the player in the db by name
-    Player searchPlayer(String name);
+    Player getPlayer(String name);
 
     // updating the player by their id
     void updatePlayer(Player you, Player opponent, boolean won);
