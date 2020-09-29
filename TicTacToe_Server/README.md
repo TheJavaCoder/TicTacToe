@@ -14,8 +14,9 @@
 * DBController.java - interface for db abstraction __(Bailey Costello)__
   * METHODS:
     * void init() - connection method
-    * **Player** searchPlayer(string name) - find a user in the db and create if non-existent
+    * **Player** getPlayer(string name) - find a user in the db and create if non-existent
     * void updatePlayer(**Player** you, **Player** opponent, boolean won) - add a player record with your username and your opponent if you won or not with date of the match 
+    * void save() - will be unused in our implementation but a nice to have in the future if other Databases use it.
 * AccessController __(implements DBController)__ - the accessDB specific code to preform the desired functions __(Thanh Nguyen)__
   * Implement the described functions in DBController.java
 * TicTacToe __(implements runnable)__ - class to be used for the game __(Bailey Costello)__
