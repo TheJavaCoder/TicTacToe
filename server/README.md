@@ -15,7 +15,7 @@
   * METHODS:
     * void init() - connection method
     * **Player** searchPlayer(string name) - find a user in the db and create if non-existent
-    * void updatePlayer(**Player** you, **Player** opponent, boolean won) - add a player record with you're username and your opponent if you won or not 
+    * void updatePlayer(**Player** you, **Player** opponent, boolean won) - add a player record with your username and your opponent if you won or not with date of the match 
 * AccessController __(implements DBController)__ - the accessDB specific code to preform the desired functions __(Thanh Nguyen)__
   * Implement the described functions in DBController.java
 * TicTacToe __(implements runnable)__ - class to be used for the game __(Bailey Costello)__
