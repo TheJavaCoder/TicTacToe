@@ -1,9 +1,15 @@
 package com.tictactoe_server;
 
+import java.util.ArrayList;
+
 
  // To be a db controller you have to implement these functions
-interface DBController {
+public interface DBController {
 
+    public ArrayList<String> requiredTables = new ArrayList<String>() { { add("users"); add("games"); } };
+    
+    public ArrayList<String> requiredColumns = new ArrayList<String> () { { add("UserName TEXT(50)"); add("PlayerOne Number, PlayerTwo Number, Win Number, Date Text"); } };
+    
     // Init of the db controller (setting up constants for each db type and creating tables if necessary)
     void init();
 

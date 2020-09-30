@@ -1,24 +1,66 @@
 
 package com.tictactoe_server;
 
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author bapco
  */
 public class AccessController implements DBController{
 
-    String dataFilePath = "C:/Data/Test/TicTacToe.accdb";
+    String dataFilePath = "C:/Data/Test/";
+    String dataFile = "TicTacToe.accdb";
 
+    private Statement stmt;
 
     @Override
     public void init() {
-        
-        // Steps:
-        //   1. Check if the database tables exists
-        //   2. If not create the right tables
-        
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            new File(dataFilePath).mkdirs();
+            
+            // Attempt to load the driver...
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            System.out.println("Loaded Access Driver!");
+            
+            // Attempting to connect to the DB
+            Connection conn = DriverManager.getConnection("jdbc:ucanaccess://" + dataFilePath + dataFile + ";newdatabaseversion=V2010");
+            System.out.println("Access Database connected!");
+            
+            // Building the statement object
+            stmt = conn.createStatement();
+            
+            // Get meta data
+            DatabaseMetaData dbMeta = conn.getMetaData();
+            
+            for (int i = 0; i < requiredTables.size(); i++) {
+                String t = requiredTables.get(i); 
+                
+                ResultSet results = dbMeta.getTables(null, null, t, new String[] {"TABLE"});
+                if(results.next()) {
+                    System.out.println( t + " table already exists... Skipping");
+                }else {
+                    String queryBuilder = "CREATE TABLE " + t + " (ID COUNTER PRIMARY KEY, ";
+                    
+                    queryBuilder = queryBuilder + requiredColumns.get(i) + ")";
+                    
+                    stmt.executeUpdate(queryBuilder);
+                    
+                    System.out.println("Created Table: [" + t + "]");
+                }
+            }
+
+        }catch( Exception e) {
+            System.out.println(" Make sure the ucanaccess.jdbcd driver is configured in your project... ");
+        }
     }
     
     // Returns a player object with their game history
