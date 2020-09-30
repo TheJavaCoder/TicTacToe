@@ -9,15 +9,14 @@ import com.tictactoe_server.AccessController;
 import com.tictactoe_server.DBController;
 
 // Test for generatation of the db file and tables. 
-
 public class DBControllerTest {
 
     public static void main(String[] args) {
-    
+
         DBController db = new AccessController();
-        
+
         db.init();
-        
+
     }
-    
+
 }
