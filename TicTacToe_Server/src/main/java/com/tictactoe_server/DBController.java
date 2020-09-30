@@ -31,7 +31,6 @@ public interface DBController {
     // updating game status
     void updateGameStats(Player you, Player opponent, boolean won);
 
-    // saving all changes to the db
-    void save();
+    
 
 }

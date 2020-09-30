@@ -17,6 +17,8 @@ public class app extends Application {
     public void init() {
         db = new AccessController();
         db.init();
+        System.out.println("---------------------- Finished Loading ---------------------- \n");
+
     }
 
     public static void main(String[] args) {

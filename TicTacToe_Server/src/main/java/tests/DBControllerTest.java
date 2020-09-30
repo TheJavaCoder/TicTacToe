@@ -13,13 +13,19 @@ public class DBControllerTest {
 
     public static void main(String[] args) {
 
+        System.out.println("---------------------- Database Controller Tests ---------------------- \n");
+
         DBController db = new AccessController();
 
         db.init();
 
-        db.addPlayer("BoB");
+        db.addPlayer("Test1");
+
+        db.addPlayer("Test2");
         
-        db.getPlayer("BoB");
+        db.updateGameStats( db.getPlayer("Test1"), db.getPlayer("Test2"), true);
+        
+        System.out.println(" Games Found: " + db.getPlayer("Test1").gameHistory.size());
     }
 
 }

@@ -7,7 +7,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class AccessController implements DBController {
 
@@ -69,20 +71,43 @@ public class AccessController implements DBController {
     // Adds a player to the user table
     @Override
     public void addPlayer(String name) {
-        try {
-            String q = "INSERT INTO users (UserName) VALUES (?)";
-            PreparedStatement pst = conn.prepareStatement(q);
-            pst.setString(1, name);
-            pst.execute();
 
-            System.out.println("Added user: " + name);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        name = name.trim();
+
+        if (getPlayer(name) == null) {
+            try {
+                String q = "INSERT INTO users (UserName) VALUES (?)";
+                PreparedStatement pst = conn.prepareStatement(q);
+                pst.setString(1, name);
+                pst.execute();
+
+                System.out.println("Added user: " + name);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("User: " + name + " already exists... Skipping ");
         }
     }
 
+    public String getPlayerName(int id) {
+
+        try {
+
+            String query = "SELECT UserName FROM users WHERE ID =" + id;
+            ResultSet rs = conn.createStatement().executeQuery(query);
+
+            if (rs.next()) {
+                return rs.getString(1);
+            }
+
+        } catch (Exception e) {
+        }
+
+        return null;
+    }
+
     // Returns a player object with their game history
-    
     //Tested without game history
     @Override
     public Player getPlayer(String name) {
@@ -99,53 +124,65 @@ public class AccessController implements DBController {
             if (results.next()) {
                 player.id = results.getInt(1);
                 player.name = name;
-                
-                System.out.println("Found user: " + name);
-            }else {
-                return player;
+
+            } else {
+                return null;
             }
 
-            query = "SELECT * FROM games WHERE PlayerOne = '" + name + "' OR PlayerTwo = '" + name + "'"; 
+            query = "SELECT PlayerTwo, Win, Date FROM games WHERE PlayerOne = " + player.id;
             results = conn.createStatement().executeQuery(query);
-            
+
+            player.gameHistory = new ArrayList<>();
+
+            while (results.next()) {
+
+                GameResult gr = new GameResult();
+
+                gr.opponent = getPlayerName(results.getInt(1));
+
+                gr.won = (results.getInt(2) == 1);
+
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-DD");
+
+                gr.date = simpleDateFormat.parse(results.getString(3));
+
+                player.gameHistory.add(gr);
+            }
+
             // Query the games table with the player's id and return the rows
             // Build new ArrayList<GameResults>
             // Add the gameresults to the player object and return it
-            
-        } catch (Exception e) {
-        }
+            return player;
 
-        return player;
+        } catch (Exception e) {
+            // User not found.
+        }
+        return null;
+
     }
 
     // Update game status - function that is called twice per game to save the player's state
     @Override
     public void updateGameStats(Player you, Player opponent, boolean won) {
-        
-        String q = "INSERT INTO games (PlayerOne, PlayerTwo, Win, Date) VALUE (?,?,?,?)";
-        
+
+        String q = "INSERT INTO games (PlayerOne, PlayerTwo, Win, Date) VALUES (?,?,?,?)";
+
         int IntWon = (won) ? 1 : 0;
-        
+
         try {
-        
+
             PreparedStatement ps = conn.prepareStatement(q);
-        
+
             ps.setInt(1, you.id);
             ps.setInt(2, opponent.id);
             ps.setInt(3, IntWon);
             ps.setString(4, LocalDate.now().toString());
-        
+
             ps.execute();
-            
+
         } catch (Exception e) {
-            e.printStackTrace();
+            
         }
         //   1. SQL command to insert a new row with your player.id, oppenent's player.id, boolean value, and date of match 
     }
-
-    @Override
-    public void save() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
