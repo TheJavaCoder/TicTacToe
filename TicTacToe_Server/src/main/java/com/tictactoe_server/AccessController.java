@@ -91,6 +91,7 @@ public class AccessController implements DBController {
         }
     }
 
+    // Fully Tested
     public String getPlayerName(int id) {
 
         try {
@@ -108,8 +109,8 @@ public class AccessController implements DBController {
         return null;
     }
 
+    // Fully Tested
     // Returns a player object with their game history
-    //Tested without game history
     @Override
     public Player getPlayer(String name) {
 
@@ -148,7 +149,7 @@ public class AccessController implements DBController {
                 gr.won = (results.getInt(2) == 1);
 
                 // Parse the date
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-DD");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 gr.date = simpleDateFormat.parse(results.getString(3));
 
                 // Add to the user's object
@@ -164,6 +165,7 @@ public class AccessController implements DBController {
 
     }
 
+    // Fully Tested
     // Update game status - function that is called twice per game to save the player's state
     @Override
     public void updateGameStats(Player you, Player opponent, boolean won) {
@@ -180,11 +182,10 @@ public class AccessController implements DBController {
             ps.setInt(2, opponent.id);
             ps.setInt(3, IntWon);
             ps.setString(4, LocalDate.now().toString());
-
             ps.execute();
 
         } catch (Exception e) {
-            
+
         }
     }
 }
