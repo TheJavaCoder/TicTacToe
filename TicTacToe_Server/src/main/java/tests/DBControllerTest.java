@@ -1,7 +1,34 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+Output of the test
+
+---------------------- Database Controller Tests ---------------------- 
+
+Loaded Access Driver!
+Access Database connected!
+Created Table: [users]
+Created Table: [games]
+Added user: Test1
+Added user: Test2
+----------------------- Game History of Test1 ------------------------
+Matches Played: 1 
+
+
+Match #1
+Opponent: Test2
+Who won?: You
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+----------------------- Game History of Test2 ------------------------
+Matches Played: 1 
+
+
+Match #1
+Opponent: Test1
+Who won?: Them
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+
  */
 package tests;
 
