@@ -33,7 +33,6 @@ public class AccessController implements DBController {
             System.out.println("Access Database connected!");
 
             // Building the statement object
-            
             // Get meta data
             DatabaseMetaData dbMeta = conn.getMetaData();
 
@@ -74,7 +73,8 @@ public class AccessController implements DBController {
             String q = "INSERT INTO users (UserName) VALUES (?)";
             PreparedStatement pst = conn.prepareStatement(q);
             pst.setString(1, name);
-            
+            pst.execute();
+
             System.out.println("Added user: " + name);
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -85,14 +85,29 @@ public class AccessController implements DBController {
     @Override
     public Player getPlayer(String name) {
 
-        // Steps:
-        //   1. Query the player's table with their name
-        //   2. Return the row
-        //   3. create player object i.e Player player = new Player();
-        //   4. Query the games table with the player's id and return the rows
-        //   5. Build new ArrayList<GameResults>
-        //   6. Add the gameresults to the player object and return it
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Player player = new Player();
+        
+        try {
+
+            // Query the player's table with their name
+            String query = "SELECT ID FROM users WHERE UserName = '" + name + "'";
+            ResultSet results = conn.createStatement().executeQuery(query);
+
+            // Build the begining of the player object
+            if(results.next()) {
+                player.id = results.getInt(1);
+                player.name = name;
+            }
+            
+            
+            // Query the games table with the player's id and return the rows
+            // Build new ArrayList<GameResults>
+            // Add the gameresults to the player object and return it
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return player;
     }
 
     // Update game status - function that is called twice per game to save the player's state

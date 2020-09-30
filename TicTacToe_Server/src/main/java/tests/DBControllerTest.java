@@ -17,7 +17,9 @@ public class DBControllerTest {
 
         db.init();
 
-        db.addPlayer("Bailey");
+        db.addPlayer("BoB");
+        
+        db.getPlayer("BoB");
     }
 
 }
