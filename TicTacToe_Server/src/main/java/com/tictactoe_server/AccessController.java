@@ -4,15 +4,19 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AccessController implements DBController {
 
     String dataFilePath = "C:/Data/Test/";
     String dataFile = "TicTacToe.accdb";
 
-    private Statement stmt;
+    private Connection conn;
 
     @Override
     public void init() {
@@ -25,12 +29,11 @@ public class AccessController implements DBController {
             System.out.println("Loaded Access Driver!");
 
             // Attempting to connect to the DB
-            Connection conn = DriverManager.getConnection("jdbc:ucanaccess://" + dataFilePath + dataFile + ";newdatabaseversion=V2010");
+            conn = DriverManager.getConnection("jdbc:ucanaccess://" + dataFilePath + dataFile + ";newdatabaseversion=V2010");
             System.out.println("Access Database connected!");
 
             // Building the statement object
-            stmt = conn.createStatement();
-
+            
             // Get meta data
             DatabaseMetaData dbMeta = conn.getMetaData();
 
@@ -53,7 +56,7 @@ public class AccessController implements DBController {
                     // Need to grab the column requirements.
                     queryBuilder = queryBuilder + requiredColumns.get(i) + ")";
 
-                    stmt.executeUpdate(queryBuilder);
+                    conn.createStatement().executeUpdate(queryBuilder);
 
                     System.out.println("Created Table: [" + t + "]");
                 }
@@ -67,7 +70,15 @@ public class AccessController implements DBController {
     // Adds a player to the user table
     @Override
     public void addPlayer(String name) {
-
+        try {
+            String q = "INSERT INTO users (UserName) VALUES (?)";
+            PreparedStatement pst = conn.prepareStatement(q);
+            pst.setString(1, name);
+            
+            System.out.println("Added user: " + name);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     // Returns a player object with their game history
