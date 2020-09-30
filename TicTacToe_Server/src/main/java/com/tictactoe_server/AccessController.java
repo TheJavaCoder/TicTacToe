@@ -74,6 +74,7 @@ public class AccessController implements DBController {
 
         name = name.trim();
 
+        // Check if the player already exists
         if (getPlayer(name) == null) {
             try {
                 String q = "INSERT INTO users (UserName) VALUES (?)";
@@ -134,24 +135,26 @@ public class AccessController implements DBController {
 
             player.gameHistory = new ArrayList<>();
 
+            // Loop through all the games
             while (results.next()) {
 
+                // Build the object
                 GameResult gr = new GameResult();
 
+                // The other player
                 gr.opponent = getPlayerName(results.getInt(1));
 
+                // Boolean of the win
                 gr.won = (results.getInt(2) == 1);
 
+                // Parse the date
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-DD");
-
                 gr.date = simpleDateFormat.parse(results.getString(3));
 
+                // Add to the user's object
                 player.gameHistory.add(gr);
             }
 
-            // Query the games table with the player's id and return the rows
-            // Build new ArrayList<GameResults>
-            // Add the gameresults to the player object and return it
             return player;
 
         } catch (Exception e) {
@@ -183,6 +186,5 @@ public class AccessController implements DBController {
         } catch (Exception e) {
             
         }
-        //   1. SQL command to insert a new row with your player.id, oppenent's player.id, boolean value, and date of match 
     }
 }
