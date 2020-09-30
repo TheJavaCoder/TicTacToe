@@ -6,15 +6,8 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author bapco
- */
 public class AccessController implements DBController{
 
     String dataFilePath = "C:/Data/Test/";
@@ -25,6 +18,7 @@ public class AccessController implements DBController{
     @Override
     public void init() {
         try {
+            // create the directory if it doesn't exist.
             new File(dataFilePath).mkdirs();
             
             // Attempt to load the driver...
@@ -41,15 +35,23 @@ public class AccessController implements DBController{
             // Get meta data
             DatabaseMetaData dbMeta = conn.getMetaData();
             
+            // For loop through the required tables
             for (int i = 0; i < requiredTables.size(); i++) {
+                
+                // Getting the table name
                 String t = requiredTables.get(i); 
                 
+                // Checking if the table exists
                 ResultSet results = dbMeta.getTables(null, null, t, new String[] {"TABLE"});
+                
+                // Whoops it exists
                 if(results.next()) {
                     System.out.println( t + " table already exists... Skipping");
                 }else {
+                    // Need to create the table 
                     String queryBuilder = "CREATE TABLE " + t + " (ID COUNTER PRIMARY KEY, ";
                     
+                    // Need to grab the column requirements.
                     queryBuilder = queryBuilder + requiredColumns.get(i) + ")";
                     
                     stmt.executeUpdate(queryBuilder);
