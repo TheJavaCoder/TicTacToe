@@ -65,6 +65,12 @@ public class AccessController implements DBController{
         }
     }
     
+    // Adds a player to the user table
+    @Override
+    public void addPlayer(String name) {
+    
+    }
+    
     // Returns a player object with their game history
     @Override
     public Player getPlayer(String name) {
@@ -80,9 +86,9 @@ public class AccessController implements DBController{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    // Update player - function that is called twice per game to save the player's state
+    // Update game status - function that is called twice per game to save the player's state
     @Override
-    public void updatePlayer(Player you, Player opponent, boolean won) {
+    public void updateGameStats(Player you, Player opponent, boolean won) {
         
         // Steps: 
         //   1. SQL command to insert a new row with your player.id, oppenent's player.id, boolean value, and date of match 

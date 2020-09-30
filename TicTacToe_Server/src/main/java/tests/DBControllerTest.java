@@ -8,10 +8,8 @@ package tests;
 import com.tictactoe_server.AccessController;
 import com.tictactoe_server.DBController;
 
-/**
- *
- * @author bapco
- */
+// Test for generatation of the db file and tables. 
+
 public class DBControllerTest {
 
     public static void main(String[] args) {
