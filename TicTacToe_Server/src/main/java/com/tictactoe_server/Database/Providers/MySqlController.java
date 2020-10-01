@@ -23,6 +23,7 @@ public class MySqlController implements DBController {
             propertiesPathAndFile = MySqlController.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
             propertiesPath = propertiesPathAndFile.replaceAll(propertiesPathAndFile.substring(propertiesPathAndFile.lastIndexOf("/") + 1), "DatabaseConnectionProperties.yml");
         } catch (URISyntaxException ex) {
+            System.out.println("Couldn't find the DatabaseConnectionProperties.yml file");
         }
     }
 
