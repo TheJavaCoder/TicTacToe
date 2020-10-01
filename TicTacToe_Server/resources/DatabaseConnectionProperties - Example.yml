@@ -1,3 +1,5 @@
+# This is an example file
+# Edit it and rename to DatabaseConnectionProperties.yml
 host: "localhost"
 port: "3306"
 user: "root"
