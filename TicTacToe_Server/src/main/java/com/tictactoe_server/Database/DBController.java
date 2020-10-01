@@ -1,4 +1,4 @@
-package com.tictactoe_server;
+package com.tictactoe_server.Database;
 
 import java.util.ArrayList;
 

@@ -1,5 +1,8 @@
-package com.tictactoe_server;
+package com.tictactoe_server.Database.Providers;
 
+import com.tictactoe_server.Database.DBController;
+import com.tictactoe_server.Database.GameResult;
+import com.tictactoe_server.Database.Player;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -119,8 +122,10 @@ public class AccessController implements DBController {
         try {
 
             // Query the player's table with their name
-            String query = "SELECT ID FROM users WHERE UserName = '" + name + "'";
-            ResultSet results = conn.createStatement().executeQuery(query);
+            String query = "SELECT ID FROM users WHERE UserName = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ResultSet results = ps.executeQuery();
 
             // Build the begining of the player object
             if (results.next()) {
@@ -131,8 +136,10 @@ public class AccessController implements DBController {
                 return null;
             }
 
-            query = "SELECT PlayerTwo, Win, Date FROM games WHERE PlayerOne = " + player.id;
-            results = conn.createStatement().executeQuery(query);
+            query = "SELECT PlayerTwo, Win, Date FROM games WHERE PlayerOne = ?";
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, player.id);
+            results = ps.executeQuery();
 
             player.gameHistory = new ArrayList<>();
 
@@ -160,6 +167,7 @@ public class AccessController implements DBController {
 
         } catch (Exception e) {
             // User not found.
+            e.printStackTrace();
         }
         return null;
 

@@ -32,10 +32,10 @@ Date of match: Wed Sep 30 00:00:00 EDT 2020
  */
 package tests;
 
-import com.tictactoe_server.AccessController;
-import com.tictactoe_server.DBController;
-import com.tictactoe_server.GameResult;
-import com.tictactoe_server.Player;
+import com.tictactoe_server.Database.Providers.AccessController;
+import com.tictactoe_server.Database.DBController;
+import com.tictactoe_server.Database.GameResult;
+import com.tictactoe_server.Database.Player;
 
 // Test for generatation of the db file and tables. 
 public class DBControllerTest {
@@ -48,7 +48,7 @@ public class DBControllerTest {
 
         db.init();
 
-        db.addPlayer("Test1");
+        db.addPlayer("Test1'");
 
         db.addPlayer("Test2");
 
