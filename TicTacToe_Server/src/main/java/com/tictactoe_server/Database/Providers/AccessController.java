@@ -2,7 +2,7 @@ package com.tictactoe_server.Database.Providers;
 
 import com.tictactoe_server.Database.DBController;
 import com.tictactoe_server.Database.GameResult;
-import com.tictactoe_server.Database.Player;
+import com.tictactoe_server.game.Player;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;

@@ -35,7 +35,7 @@ package tests;
 import com.tictactoe_server.Database.Providers.AccessController;
 import com.tictactoe_server.Database.DBController;
 import com.tictactoe_server.Database.GameResult;
-import com.tictactoe_server.Database.Player;
+import com.tictactoe_server.game.Player;
 
 // Test for generatation of the db file and tables. 
 public class DBControllerTest {

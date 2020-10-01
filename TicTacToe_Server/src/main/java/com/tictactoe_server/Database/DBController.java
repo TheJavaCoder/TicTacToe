@@ -1,5 +1,6 @@
 package com.tictactoe_server.Database;
 
+import com.tictactoe_server.game.Player;
 import java.util.ArrayList;
 
 // To be a db controller you have to implement these functions

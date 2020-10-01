@@ -1,5 +1,6 @@
-package com.tictactoe_server.Database;
+package com.tictactoe_server.game;
 
+import com.tictactoe_server.Database.GameResult;
 import java.util.ArrayList;
 
 public class Player {
