@@ -1,0 +1,4 @@
+Host: "localhost"
+Port: "3306"
+User: "root"
+Pass: "admin"

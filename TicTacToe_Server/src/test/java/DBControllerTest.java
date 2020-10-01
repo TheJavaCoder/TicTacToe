@@ -30,7 +30,7 @@ Date of match: Wed Sep 30 00:00:00 EDT 2020
 
 
  */
-package tests;
+
 
 import com.tictactoe_server.Database.Providers.AccessController;
 import com.tictactoe_server.Database.DBController;
