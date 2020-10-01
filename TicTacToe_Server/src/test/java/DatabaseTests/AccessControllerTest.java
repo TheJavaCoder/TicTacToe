@@ -1,3 +1,5 @@
+package DatabaseTests;
+
 /*
 
 Output of the test
@@ -38,7 +40,7 @@ import com.tictactoe_server.Database.GameResult;
 import com.tictactoe_server.game.Player;
 
 // Test for generatation of the db file and tables. 
-public class DBControllerTest {
+public class AccessControllerTest {
 
     public static void main(String[] args) {
 

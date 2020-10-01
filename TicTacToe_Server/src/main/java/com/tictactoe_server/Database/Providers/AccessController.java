@@ -95,7 +95,7 @@ public class AccessController implements DBController {
     }
 
     // Fully Tested
-    public String getPlayerName(int id) {
+    public String getPlayer(int id) {
 
         try {
 
@@ -150,7 +150,7 @@ public class AccessController implements DBController {
                 GameResult gr = new GameResult();
 
                 // The other player
-                gr.opponent = getPlayerName(results.getInt(1));
+                gr.opponent = getPlayer(results.getInt(1));
 
                 // Boolean of the win
                 gr.won = (results.getInt(2) == 1);

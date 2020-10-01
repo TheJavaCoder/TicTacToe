@@ -7,15 +7,17 @@ import com.tictactoe_server.game.Player;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-
+import java.sql.Connection;
 
 public class MySqlController implements DBController {
 
     private DatabaseConnectionProperties dbProperties;
-    
-    String propertiesPathAndFile; 
+
+    String propertiesPathAndFile;
     String propertiesPath;
-    
+
+    private Connection conn;
+
     public MySqlController() {
         try {
             propertiesPathAndFile = MySqlController.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
@@ -23,26 +25,29 @@ public class MySqlController implements DBController {
         } catch (URISyntaxException ex) {
         }
     }
-    
+
     public MySqlController(String path) {
         propertiesPath = path;
     }
-    
+
     @Override
     public void init() {
         try {
-            
-            
+
             File file = new File(propertiesPath);
-            
+
             ObjectMapper om = new ObjectMapper(new YAMLFactory());
-            
+
             dbProperties = om.readValue(file, DatabaseConnectionProperties.class);
             
-            
-        
+            System.out.println("Attempting to connect to: '" + dbProperties.host + "' on port: " + dbProperties.port);
+
         } catch (IOException | UnsupportedOperationException ex) {
-            ex.printStackTrace();
+            if (ex instanceof IOException) {
+                System.out.println("Couldn't find the DatabaseConnectionProperties.yml file");
+            } else {
+                System.out.println("Error!");
+            }
         }
     }
 
@@ -52,6 +57,11 @@ public class MySqlController implements DBController {
     }
 
     @Override
+    public String getPlayer(int id) {
+        return "";
+    }
+    
+    @Override
     public Player getPlayer(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -60,5 +70,5 @@ public class MySqlController implements DBController {
     public void updateGameStats(Player you, Player opponent, boolean won) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

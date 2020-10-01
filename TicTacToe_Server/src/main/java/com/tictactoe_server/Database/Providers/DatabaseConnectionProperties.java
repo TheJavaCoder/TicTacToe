@@ -5,14 +5,20 @@
  */
 package com.tictactoe_server.Database.Providers;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class DatabaseConnectionProperties {
 
+    @JsonProperty("host")
     String host;
     
+    @JsonProperty("port")
     int port;
     
+    @JsonProperty("user")
     String user;
     
+    @JsonProperty("pass")
     String pass;
     
 }

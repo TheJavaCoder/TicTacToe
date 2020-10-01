@@ -22,11 +22,14 @@ public interface DBController {
 
     // Init of the db controller (setting up constants for each db type and creating tables if necessary)
     void init();
-
+    
     // Adds a player to the user table
     void addPlayer(String name);
 
-    // Searching the player in the db by name
+    // Searching for the player in the db by id
+    String getPlayer(int id);
+    
+    // Searching for player in the db by name
     Player getPlayer(String name);
 
     // updating game status
