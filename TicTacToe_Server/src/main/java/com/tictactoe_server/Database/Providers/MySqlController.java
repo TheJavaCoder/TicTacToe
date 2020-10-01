@@ -35,19 +35,22 @@ public class MySqlController implements DBController {
     public void init() {
         try {
 
+            // Pull the db configuration
             File file = new File(propertiesPath);
 
             ObjectMapper om = new ObjectMapper(new YAMLFactory());
 
+            // Parse that shit
             dbProperties = om.readValue(file, DatabaseConnectionProperties.class);
             
             System.out.println("Attempting to connect to: '" + dbProperties.host + "' on port: " + dbProperties.port);
 
         } catch (IOException | UnsupportedOperationException ex) {
+            // Whoops.. No file or couldn't parse the file
             if (ex instanceof IOException) {
                 System.out.println("Couldn't find the DatabaseConnectionProperties.yml file");
-            } else {
-                System.out.println("Error!");
+            } else if (ex instanceof UnsupportedOperationException){
+                System.out.println("Issue with the DatabaseConnectionProperties.yml referance the example file");
             }
         }
     }
