@@ -19,8 +19,18 @@
     * **Player** getPlayer(string name) - find a user in the db and create if non-existent
     * void updateGameStats(**Player** you, **Player** opponent, boolean won) - add a player record with your username and your opponent if you won or not with date of the match 
     * void save() - will be unused in our implementation but a nice to have in the future if other Databases use it.
+
 * AccessController __(implements DBController)__ - the accessDB specific code to preform the desired functions __(Thanh Nguyen)__
   * Implement the described functions in DBController.java
+  * Loaded Driver and connect to the database.
+  * void checkPlayer(name) - check if a player is already in the database
+      If yes: return to the game, and the player can winning rate/ game
+      If no: void newPlayer(name): create new playerID (get the highest playerID + 1) and name
+  * void newGame(): when 1 or two player hit "START" to start a game, create new attribute for Games table, include gameID, playerID 1, playerID 2
+  * void winning(): get the result from updateGameStates then update database, winning mark "1", losing mark "0"
+  * winningRate(name): return winning rate
+  
+  
 * TicTacToe __(implements runnable)__ - class to be used for the game __(Bailey Costello)__
   * METHODS:
     * TicTacToe (Socket p1, Socket p2) - to pass the player's sockets through to this thread
