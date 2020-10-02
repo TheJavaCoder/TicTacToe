@@ -54,8 +54,8 @@ public class AccessControllerTest {
 
         db.addPlayer("Test2");
 
-        db.updateGameStats(db.getPlayer("Test1"), db.getPlayer("Test2"), true);
-        db.updateGameStats(db.getPlayer("Test2"), db.getPlayer("Test1"), false);
+        db.updateGameStats(db.getPlayer("Test1"), db.getPlayer("Test2"), false);
+        db.updateGameStats(db.getPlayer("Test2"), db.getPlayer("Test1"), true);
 
         printGameHistory(db.getPlayer("Test1"));
         printGameHistory(db.getPlayer("Test2"));
@@ -65,7 +65,9 @@ public class AccessControllerTest {
 
         System.out.println("----------------------- Game History of " + p.name + " ------------------------");
 
-        System.out.println("Matches Played: " + p.gameHistory.size() + " \n\n");
+        System.out.println("Matches Played: " + p.gameHistory.size() + " \n");
+        
+        System.out.println("Win Percentage: " + p.winPercentage() + " \n\n");
 
         for (int i = 0; i < p.gameHistory.size(); i++) {
 

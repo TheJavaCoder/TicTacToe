@@ -13,5 +13,19 @@ public class Player {
 
     // list of the different games the user has played
     public ArrayList<GameResult> gameHistory;
+    
+    public double winPercentage() {
+        
+        double counter = 0;
+        
+        for(GameResult gr : gameHistory) {
+            if(gr.won) {
+                counter++;
+            }
+        }
+        
+        return counter / gameHistory.size();
+        
+    }
 
 }
