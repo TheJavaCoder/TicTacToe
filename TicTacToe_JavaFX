@@ -1,0 +1,83 @@
+public class TicTacToe_Board extends Application {
+    
+    private Parent createContent()
+    {
+        Pane root = new Pane();
+        root.setPrefSize(450, 450);
+        
+        for (int i = 0; i < 3; i++){
+            for (int j =  0; j < 3; j++){
+                Tile tile = new Tile();
+                tile.setTranslateX(j * 150);
+                tile.setTranslateY(i * 150);
+                root.getChildren().add(tile);
+            }
+        }
+        
+        return root;
+    }
+    
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setScene(new Scene(createContent()));
+        primaryStage.show();
+    }    
+    
+    public class Tile extends StackPane{
+        private Text text = new Text();
+        public Tile(){
+            Rectangle border = new Rectangle(150, 150);
+            border.setFill(null);
+            border.setStroke(Color.BLACK);
+            text.setFont(Font.font(50));
+            
+            setAlignment(Pos.CENTER);
+            getChildren().addAll(border, text);
+            //Set what happens when click a tile
+            setOnMouseClicked(event -> {
+                  if (event.getButton() == MouseButton.PRIMARY){
+                      drawX();
+                  }
+                  else if (event.getButton() == MouseButton.SECONDARY)
+                      drawO();
+                  
+            });
+        }
+    
+        private void drawX(){
+            text.setText("X");
+            }
+        private void drawO(){
+            text.setText("O");
+            }
+    }  
+    
+    public class Login extends Application {
+    
+    @Override
+    public void start(Stage primaryStage) {
+        Label lbName = new Label("Please enter your name");
+        TextField tfName = new TextField();
+        Label lbWinningRate = new Label("Check your winning rate");
+        Button btWinningRate = new Button("Check");
+        TextField tfWinningRate = new TextField();
+        //btWinningRate.setOnAction(winningRate()); 
+        
+        tfName.setAlignment(Pos.CENTER);
+        
+        GridPane gridpane = new GridPane();
+        gridpane.add(lbName, 0, 0);
+        gridpane.add(tfName, 1, 0);
+        gridpane.add(lbWinningRate, 0 ,1);
+        gridpane.add(btWinningRate, 1, 1);
+        
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(gridpane, tfWinningRate);
+        
+        Scene scene = new Scene(vbox, 320, 350);
+        
+        primaryStage.setTitle("Login - TicTacToe");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+            
+    }}   
