@@ -8,12 +8,14 @@ Output of the test
 
 Loaded Access Driver!
 Access Database connected!
-Created Table: [users]
-Created Table: [games]
-Added user: Test1
-Added user: Test2
+users table already exists... Skipping
+games table already exists... Skipping
+User: Test1' already exists... Skipping 
+User: Test2 already exists... Skipping 
 ----------------------- Game History of Test1 ------------------------
-Matches Played: 1 
+Matches Played: 14 
+
+Win Percentage: 0.9285714285714286 
 
 
 Match #1
@@ -21,14 +23,146 @@ Opponent: Test2
 Who won?: You
 Date of match: Wed Sep 30 00:00:00 EDT 2020
 
+Match #2
+Opponent: Test2
+Who won?: You
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #3
+Opponent: Test2
+Who won?: You
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #4
+Opponent: Test2
+Who won?: You
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #5
+Opponent: Test2
+Who won?: You
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #6
+Opponent: Test2
+Who won?: You
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #7
+Opponent: Test2
+Who won?: You
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #8
+Opponent: Test2
+Who won?: You
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #9
+Opponent: Test2
+Who won?: You
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #10
+Opponent: Test2
+Who won?: You
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #11
+Opponent: Test2
+Who won?: You
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #12
+Opponent: Test2
+Who won?: You
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #13
+Opponent: Test2
+Who won?: You
+Date of match: Fri Oct 02 00:00:00 EDT 2020
+
+Match #14
+Opponent: Test2
+Who won?: Them
+Date of match: Fri Oct 02 00:00:00 EDT 2020
+
 ----------------------- Game History of Test2 ------------------------
-Matches Played: 1 
+Matches Played: 14 
+
+Win Percentage: 0.07142857142857142 
 
 
 Match #1
 Opponent: Test1
 Who won?: Them
 Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #2
+Opponent: Test1
+Who won?: Them
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #3
+Opponent: Test1
+Who won?: Them
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #4
+Opponent: Test1
+Who won?: Them
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #5
+Opponent: Test1
+Who won?: Them
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #6
+Opponent: Test1
+Who won?: Them
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #7
+Opponent: Test1
+Who won?: Them
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #8
+Opponent: Test1
+Who won?: Them
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #9
+Opponent: Test1
+Who won?: Them
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #10
+Opponent: Test1
+Who won?: Them
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #11
+Opponent: Test1
+Who won?: Them
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #12
+Opponent: Test1
+Who won?: Them
+Date of match: Wed Sep 30 00:00:00 EDT 2020
+
+Match #13
+Opponent: Test1
+Who won?: Them
+Date of match: Fri Oct 02 00:00:00 EDT 2020
+
+Match #14
+Opponent: Test1
+Who won?: You
+Date of match: Fri Oct 02 00:00:00 EDT 2020
 
 
  */
