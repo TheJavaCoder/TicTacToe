@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class app extends Application {
 
     // Used to provide abstraction from a single database provider
-    public static DBController db;
+    private static DBController db;
 
     public void start(Stage s) {
         init();
@@ -25,6 +25,10 @@ public class app extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    public static DBController getDBController() {
+        return db;
     }
 
 }
