@@ -13,6 +13,8 @@ import com.tictactoe_server.game.Move;
  */
 public interface INetworkComposer {
     
+    public void close(Object connection);
+    
     public String sendGameHistoryData();
     
     public String sendMoveData(Move m);
@@ -26,5 +28,9 @@ public interface INetworkComposer {
     public String sendUsername();
     
     public void compose(String s);
+    
+    public Object createConnection(String server, int port);
+    
+    public Object acceptConnection(Object server); 
     
 }

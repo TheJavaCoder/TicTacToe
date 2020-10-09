@@ -9,6 +9,7 @@ import com.tictactoe_client.Networking.INetworkComposer;
 import com.tictactoe_client.Networking.INetworkParser;
 import com.tictactoe_client.Networking.JavaServerComposer;
 import com.tictactoe_client.Networking.JavaServerParser;
+import java.io.IOException;
 import java.net.Socket;
 import java.util.concurrent.TimeUnit;
 import javafx.application.Application;
@@ -32,6 +33,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  *
@@ -69,6 +71,15 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                networkComposer.close(serverConnection);
+            }
+        });
+        
+        
         Label lbName = new Label("Please enter your name");
         tfName = new TextField();
         TextField serverAddress = new TextField("127.0.0.1");
@@ -131,7 +142,17 @@ public class App extends Application {
                  
                 
             }else {
+                
                 connecting.setText("Connected!");
+                
+                Platform.runLater(() -> {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                    newWindow.close();
+                });
                 
                 // Show their game history and win rate while waiting for a game.
             }

@@ -14,6 +14,8 @@ public interface INetworkComposer {
     
     public Object createConnection(String server, int port);
     
+    public void close(Object connection);
+    
     public String sendGameHistoryData();
     
     public String sendMoveData(Move m);

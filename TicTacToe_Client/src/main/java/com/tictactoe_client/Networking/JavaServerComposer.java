@@ -63,5 +63,14 @@ public class JavaServerComposer implements INetworkComposer{
             return null;
         }
     }
+
+    @Override
+    public void close(Object connection) {
+        try {
+            ((Socket)connection).close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
     
 }

@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tictactoe_client.Networking;
+package com.tictactoe_server.Networking;
 
-import java.io.DataInputStream;
+import com.tictactoe_server.game.Move;
 import java.io.IOException;
+import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -55,12 +58,30 @@ public class JavaServerComposer implements INetworkComposer{
     public Object createConnection(String server, int port) {
         
         try {
-            Socket connection = new Socket(server, port);
+            ServerSocket connection = new ServerSocket(port);
             
             return connection;
         } catch (IOException ex) {
         
             return null;
+        }
+    }
+    
+    public Object acceptConnection(Object server) {
+        try {
+            return ((ServerSocket) server).accept();
+        } catch (IOException ex) {
+            Logger.getLogger(JavaServerComposer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    @Override
+    public void close(Object connection) {
+        try {
+            ((ServerSocket)connection).close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
     
