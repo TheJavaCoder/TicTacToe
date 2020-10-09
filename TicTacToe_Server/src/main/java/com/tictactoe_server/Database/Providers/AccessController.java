@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class AccessController implements DBController {
 
@@ -196,4 +198,18 @@ public class AccessController implements DBController {
 
         }
     }
+
+    @Override
+    public ObservableList<ObservableList<String>> getGames() {
+        
+        ObservableList<ObservableList<String>> rowsColumns = FXCollections.observableArrayList();
+        
+        
+        
+        return rowsColumns;
+    
+    }
+    
+    
+    
 }

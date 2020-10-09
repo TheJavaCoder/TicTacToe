@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.Connection;
+import javafx.collections.ObservableList;
 
 public class MySqlController implements DBController {
 
@@ -72,6 +73,11 @@ public class MySqlController implements DBController {
 
     @Override
     public void updateGameStats(Player you, Player opponent, boolean won) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ObservableList<ObservableList<String>> getGames() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

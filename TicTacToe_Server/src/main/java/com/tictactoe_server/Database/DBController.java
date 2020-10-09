@@ -2,6 +2,7 @@ package com.tictactoe_server.Database;
 
 import com.tictactoe_server.game.Player;
 import java.util.ArrayList;
+import javafx.collections.ObservableList;
 
 // To be a db controller you have to implement these functions
 public interface DBController {
@@ -35,6 +36,6 @@ public interface DBController {
     // updating game status
     void updateGameStats(Player you, Player opponent, boolean won);
 
-    
+    ObservableList<ObservableList<String>> getGames();
 
 }

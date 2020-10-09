@@ -1,6 +1,7 @@
 package com.tictactoe_server.game;
 
 import com.tictactoe_server.Database.GameResult;
+import java.net.Socket;
 import java.util.ArrayList;
 
 public class Player {
@@ -13,6 +14,8 @@ public class Player {
 
     // list of the different games the user has played
     public ArrayList<GameResult> gameHistory;
+    
+    public Socket connection;
     
     public double winPercentage() {
         

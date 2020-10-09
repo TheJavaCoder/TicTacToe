@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tictactoe_client;
+package com.tictactoe_client;
 
+import java.net.Socket;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,8 +31,12 @@ import javafx.stage.Stage;
  *
  * @author Thanh Nguyen
  */
-public class TicTacToe_Client extends Application {
+public class App extends Application {
     //Create TicTacToe Board for the scene
+    
+    TextField tfName;
+    Socket socket;
+    
     private Parent createContent()
     {
         Pane root = new Pane();
@@ -49,29 +55,46 @@ public class TicTacToe_Client extends Application {
     @Override
     public void start(Stage primaryStage) {
         Label lbName = new Label("Please enter your name");
-        TextField tfName = new TextField();
-        Label lbWinningRate = new Label("Check your winning rate");
-        Button btWinningRate = new Button("Check");
-        TextField tfWinningRate = new TextField();
+        tfName = new TextField();
+        
         Button btPlay = new Button("Play");
-        btPlay.setOnAction(e -> primaryStage.setScene(new Scene(createContent())));
+        
+        // Asks for server connection string
+        btPlay.setOnAction(e-> displayServerConnection(primaryStage));
         
         tfName.setAlignment(Pos.CENTER);
         
-        GridPane gridpane = new GridPane();
-        gridpane.add(lbName, 0, 0);
-        gridpane.add(tfName, 1, 0);
-        gridpane.add(lbWinningRate, 0 ,1);
-        gridpane.add(btWinningRate, 1, 1);
+        Label lbServerAddress = new Label("Enter server address");
+        TextField serverAddress = new TextField("127.0.0.1");
+        serverAddress.setAlignment(Pos.CENTER);
         
         VBox vbox = new VBox();
-        vbox.getChildren().addAll(gridpane, tfWinningRate, btPlay);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setPadding(new Insets(8));
+        vbox.getChildren().addAll(lbName, tfName, lbServerAddress, serverAddress, btPlay);
         
-        Scene scene = new Scene(vbox, 450, 450);
+        Scene scene = new Scene(vbox, 300, 125);
         
         primaryStage.setTitle("Login - TicTacToe");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+    
+    // new scene that will attempt the server connection
+    public void displayServerConnection(Stage s) {
+        
+        VBox enterConnectionAddress = new VBox();
+        enterConnectionAddress.setAlignment(Pos.CENTER);
+        enterConnectionAddress.setPadding(new Insets(5));
+        Scene secondaryWindow = new Scene(enterConnectionAddress, 300,100);
+        Stage newWindow = new Stage();
+        
+        
+        
+        newWindow.setTitle("Enter Server Address");
+        newWindow.setScene(secondaryWindow);
+        newWindow.show();
+        
     }
     
     
