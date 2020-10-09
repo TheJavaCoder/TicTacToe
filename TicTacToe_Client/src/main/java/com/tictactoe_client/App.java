@@ -114,10 +114,22 @@ public class App extends Application {
 
             if (serverConnection == null) {
                 connecting.setText("Couldn't connect try again.");
+                
+                Platform.runLater(() -> {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                    newWindow.close();
+                });
+                 
+                
             }else {
                 connecting.setText("Connected!");
-                newWindow.close();
             }
+                
+            
         });
 
     }
