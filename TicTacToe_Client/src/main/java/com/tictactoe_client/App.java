@@ -113,7 +113,7 @@ public class App extends Application {
             serverConnection = networkComposer.createConnection(connectionString, 2000);
 
             if (serverConnection == null) {
-                connecting.setText("Couldn't connect try again.");
+                connecting.setText("Couldn't connect, confirm server address.");
                 
                 Platform.runLater(() -> {
                     try {
