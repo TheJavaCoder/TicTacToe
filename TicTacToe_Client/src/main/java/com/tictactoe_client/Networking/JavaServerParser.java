@@ -5,7 +5,6 @@
  */
 package com.tictactoe_client.Networking;
 
-import com.tictactoe_client.Networking.Move;
 
 /**
  *

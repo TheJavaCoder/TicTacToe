@@ -43,11 +43,14 @@ public class App extends Application {
     TextField tfName;
     Socket socket;
 
+    public static Object serverConnection;
+    
     // Build the composer and parser of the connection to the server.. 
     INetworkComposer networkComposer = new JavaServerComposer();
     INetworkParser networkParser = new JavaServerParser();
 
-    Object serverConnection;
+    // Would be a socket object in the case of the java server
+    
 
     private Parent createContent() {
         Pane root = new Pane();
@@ -112,13 +115,15 @@ public class App extends Application {
         Platform.runLater(() -> {
             serverConnection = networkComposer.createConnection(connectionString, 2000);
 
+            
+            
             if (serverConnection == null) {
                 connecting.setText("Couldn't connect, confirm server address.");
                 
                 Platform.runLater(() -> {
                     try {
                         Thread.sleep(2000);
-                    } catch (InterruptedException ex) {
+                    } catch (Exception ex) {
                         ex.printStackTrace();
                     }
                     newWindow.close();
@@ -127,9 +132,9 @@ public class App extends Application {
                 
             }else {
                 connecting.setText("Connected!");
-            }
                 
-            
+                // Show their game history and win rate while waiting for a game.
+            }
         });
 
     }
