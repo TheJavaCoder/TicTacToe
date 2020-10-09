@@ -2,7 +2,7 @@
 
 ## Goal of the Project:
 
-To create a networked tic-tac-toe game with an authoritative server and thin client with game history.
+To create a networked tic-tac-toe game with an authoritative server and thin client with game history that is database and protocol agnostic.
 
 ### __Authors__:
 
