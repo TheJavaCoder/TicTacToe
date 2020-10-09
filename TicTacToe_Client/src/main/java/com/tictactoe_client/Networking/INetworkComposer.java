@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tictactoe_server.Networking;
-
-import com.tictactoe_server.game.Move;
+package com.tictactoe_client.Networking;
 
 /**
  *
  * @author bapco
  */
 public interface INetworkComposer {
+    
+    
+    public Object createConnection(String server, int port);
     
     public String sendGameHistoryData();
     

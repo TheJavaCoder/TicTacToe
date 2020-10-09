@@ -9,9 +9,10 @@ package com.tictactoe_client.Networking;
  *
  * @author bapco
  */
-public class Move {
-
-    public int playerID, tileID;
- 
+public enum Status {
+    
+    SUCCESS,
+    FAILURE,
+    OTHER
     
 }
